@@ -20,16 +20,15 @@ function TestNCS(n)
     end
     
     xx = min(X):dx:x(1);
-    % you need to figure out the expression for A
-    A = 0;
+    A = -(Y(ind(1)+1) - Y(ind(1))) / (X(ind(1)+1) - X(ind(1)));
     yy = A.*(xx-x(1))+y(1);
     plot(xx,yy,'r-','linewidth',2);
     set(gca,'fontsize',20);xlabel('x');ylabel('y');
     set(gca,'xtick',min(X):1:max(X));
     xx = x(end):dx:maxX;
-    % you need to figure out the expression for A
-    A = 0;
+    A = -(Y(ind(end)+1) - Y(ind(end))) / (X(ind(end)+1) - X(ind(end)));
     yy = A.*(xx-x(end))+y(end);
     plot(xx,yy,'r-','linewidth',2);
     title(['NCS: y = 1/(1+x^2) : n = ' num2str(n)]);
+    %legend('Actual','Given','Estimate');
 end

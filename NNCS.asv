@@ -32,6 +32,7 @@ function B = NNCS(x,y)
         Z(idx) = y(i);
         idx = idx + 1;
         
+        disp(i);
     end
     
     A(idx,c-3) = x(n).^3;
@@ -47,16 +48,12 @@ function B = NNCS(x,y)
         A(idx,offset) = 3.*x(i).^2;
         A(idx,offset+1) = 2.*x(i);
         A(idx,offset+2) = 1;
-        A(idx,offset+4) = -3.*x(i).^2;
-        A(idx,offset+5) = -2.*x(i);
-        A(idx,offset+6) = -1;
         Z(idx) = 0;
         idx = idx + 1;
         
-        A(idx,offset) = 6.*x(i);
-        A(idx,offset+1) = 2;
-        A(idx,offset+4) = -6.*x(i);
-        A(idx,offset+5) = -2;
+        A(idx,offset+4) = -3.*x(i).^2;
+        A(idx,offset+5) = -2.*x(i);
+        A(idx,offset+6) = -1;
         Z(idx) = 0;
         idx = idx + 1;
         
@@ -74,7 +71,9 @@ function B = NNCS(x,y)
     A(idx,c-1) = x(n-1);
     A(idx,c) = 1;
     Z(idx) = y(n-1);
-    idx = idx + 1;
+    %idx = idx + 1;
     
     B = A\Z;
+
+
 end
