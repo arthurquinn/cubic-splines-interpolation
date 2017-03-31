@@ -1,4 +1,5 @@
 function TestNCS(n)
+    c = (n-1)*4;
     dx = 0.001; maxX = 5; minX = -5;
     X = minX:dx:maxX;
     Y = 1./(1+X.^2);
@@ -20,15 +21,14 @@ function TestNCS(n)
     end
     
     xx = min(X):dx:x(1);
-    A = -(Y(ind(1)+1) - Y(ind(1))) / (X(ind(1)+1) - X(ind(1)));
+    A = 3*B(1)*x(1)^2 + 2*B(2)*x(1) + B(3);
     yy = A.*(xx-x(1))+y(1);
     plot(xx,yy,'r-','linewidth',2);
     set(gca,'fontsize',20);xlabel('x');ylabel('y');
     set(gca,'xtick',min(X):1:max(X));
     xx = x(end):dx:maxX;
-    A = -(Y(ind(end)+1) - Y(ind(end))) / (X(ind(end)+1) - X(ind(end)));
+    A = 3*B(c-3)*x(n)^2 + 2*B(c-2)*x(n) + B(c-1);
     yy = A.*(xx-x(end))+y(end);
     plot(xx,yy,'r-','linewidth',2);
     title(['NCS: y = 1/(1+x^2) : n = ' num2str(n)]);
-    %legend('Actual','Given','Estimate');
 end
